@@ -1,11 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import MediaCard from "./Components/MediaCard";
+import { useGetImagesQuery } from "./redux/nasaApi";
+import {  CssBaseline, ThemeProvider } from "@mui/material";
+import { StyledGrid, theme } from "./App.styled";
+import AppBar from "./Components/AppBar/AppBar";
 
 function App() {
+  const { data } = useGetImagesQuery();
+
   return (
-    <div className="App">
-      <header className="App-header">
-      </header>
+    <div>
+      <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <AppBar/>
+
+        <StyledGrid>
+        {data?.collection.items.map((item) => (
+          <MediaCard image={item}/>
+        ))}
+        </StyledGrid>
+      </ThemeProvider>
     </div>
   );
 }

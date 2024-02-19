@@ -1,32 +1,27 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const nasaApi = createApi({
-  reducerPath: 'nasaApi',
+  reducerPath: "nasaApi",
   baseQuery: fetchBaseQuery({
     baseUrl: "https://images-api.nasa.gov",
   }),
-  tagTypes: [''],
+  tagTypes: [""],
 
   endpoints: (builder) => ({
     //Queries
     getMetadata: builder.query({
       query: (nasa_id) => {
-        return `metadata/${nasa_id}/`
+        return `metadata/${nasa_id}`;
       },
-      providesTags: ['Metadata'],
+      providesTags: ["Metadata"],
     }),
     getImages: builder.query({
-        query: (nasa_id) => {
-          return `search`
-        },
-        providesTags: ['Images'],
-      }),
-  })
-})
+      query: (nasa_id) => {
+        return `search?q=a&description=moon%20landing`;
+      },
+      providesTags: ["Images"],
+    }),
+  }),
+});
 
-// Export hooks for usage in functional components, which are
-// auto-generated based on the defined endpoints
-export const {
-  useControlAreaLightsMutation,
-  useGetPowerLevelQuery
-} = nasaApi
+export const { useLazyGetMetadataQuery, useGetImagesQuery } = nasaApi;
