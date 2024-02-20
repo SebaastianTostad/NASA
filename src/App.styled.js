@@ -96,24 +96,10 @@ export const CustomCard = styled(Card, {
 
 
 
-export const RouterOutlet = styled(Box, {
-  shouldForwardProp: (prop) => prop !== "open",
-})(({ theme, open }) => ({
-  marginLeft: open ? "270px" : "95px", // Adjust the margin based on the drawer width when open
-  transition: theme.transitions.create("margin", {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.leavingScreen,
-  }),
-  ...(open && {
-    marginLeft: "270px", // Again, adjust this value based on the drawer width
-    transition: theme.transitions.create("margin", {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  }),
+export const RouterOutlet = styled(Box)(({ theme }) => ({
   marginTop: "65px", // Adjust the margin based on the drawer width when open
   height: "100%",
-  width: `calc(100% - ${open ? "270px" : "95px"})`, // Adjust width dynamically
+  width: "100%", // Adjust width dynamically
   padding: theme.spacing(2),
 }));
 

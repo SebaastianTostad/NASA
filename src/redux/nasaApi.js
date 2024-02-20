@@ -9,15 +9,9 @@ export const nasaApi = createApi({
 
   endpoints: (builder) => ({
     //Queries
-    getMetadata: builder.query({
-      query: (nasa_id) => {
-        return `metadata/${nasa_id}`;
-      },
-      providesTags: ["Metadata"],
-    }),
     getImages: builder.query({
-      query: (nasa_id) => {
-        return `search?q=a&description=moon%20landing`;
+      query: (query) => {
+        return `search?q=${query}&media_type=image`;
       },
       providesTags: ["Images"],
     }),

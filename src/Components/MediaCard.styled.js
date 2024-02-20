@@ -1,74 +1,39 @@
-import { Box, Card } from "@mui/material";
+import {  Card } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
-export const StyledCard = styled(Card)(({ theme }) => ({
+export const StyledCard = styled(Card)({
   cursor: 'pointer',
-  position: 'relative', 
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  borderRadius: 10,
-  overflow: "hidden",
-  backgroundColor:" transparent",
-  transition: "transform 0.2s",
-  "&:hover": {
-    transform: "scale(1.05)",
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'space-between',
+  position: 'relative',
+  borderRadius: '10px',
+  overflow: 'hidden',
+  transition: '0.3s ease-in-out',
+  '&:hover': {
+    transform: 'scale(1.03)',
   },
-  maxWidth: '345px', 
-  height: 400,
-  width: 500,
-  [theme.breakpoints.down("lg")]: {
-    flexDirection: "row",
-  },
-}));
-
-export const StyledImage = styled("img")({
-  width: "100%",
-  height: "100%", // Adjust height to cover the card
-  objectFit: "cover", // Ensure image covers the card area
-  position: 'absolute', // Make image cover the whole card area
-  top: 0,
-  left: 0,
+  backgroundColor: 'transparent',
+  boxShadow: 'none', // Remove MUI Card default boxShadow
 });
 
-export const TextOverlay = styled("div")(({ theme }) => ({
+export const StyledImage = styled('img')({
+  width: '100%',
+  height: 'auto',
+  objectFit: 'cover',
+  borderBottom: '1px solid rgba(0, 0, 0, 0.12)', // Optional: adds a slight separation between the image and the overlay/text content
+});
+
+export const TextOverlay = styled('div')({
   position: 'absolute',
   bottom: 0,
   left: 0,
   width: '100%',
-  background: 'rgba(0, 0, 0, 0.5)', // Semi-transparent overlay
-  color: 'white', // Text color
-  padding: '16px', // Padding inside the overlay
-  boxSizing: 'border-box', // Ensure padding is included in width/height
-}));
-
-// Add this new styled component to your existing styled definitions
-export const FlipContainer = styled("div")(({ isFlipped }) => ({
-  position: 'relative',
-  width: '100%',
-  height: '100%',
-  transition: 'transform 0.6s',
-  transformStyle: 'preserve-3d',
-  transform: isFlipped ? 'rotateY(180deg)' : 'none',
-}));
-
-export const CardFront = styled(Box)({
-  position: "absolute",
-  width: "100%",
-  padding:"16px",
-  height: "100%",
-  backfaceVisibility: "hidden", // Hide when flipped
-});
-
-export const CardBack = styled(Box)({
-  position: "absolute",
-  backgroundColor:" white",
-  width: "100%",
-  height: "100%",
-  padding:"16px",
-  backfaceVisibility: "hidden", // Hide when flipped
-  transform: "rotateY(180deg)", // Rotate back side
-  alignItems: "flex-start", // Align items to the start of the flex container (left)
-  textAlign: "left", // Ensure text aligns to the left
-
+  background: 'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
+  color: 'white',
+  padding: '20px',
+  boxSizing: 'border-box',
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'flex-end',
 });
