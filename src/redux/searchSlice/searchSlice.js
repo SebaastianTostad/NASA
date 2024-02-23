@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
   q: "",
+  extraFilters: {}
 }
 
 export const searchSlice = createSlice({
@@ -11,11 +12,15 @@ export const searchSlice = createSlice({
     setQueryInput: (state, action) => {
       state.q = action.payload
     },
+    setExtraFilters: (state, action) => {
+      state.extraFilters= action.payload
   },
+}
 })
 
 export const {
-    setQueryInput
+    setQueryInput,
+    setExtraFilters
 } = searchSlice.actions
 
 export default searchSlice.reducer

@@ -10,8 +10,12 @@ export const nasaApi = createApi({
   endpoints: (builder) => ({
     //Queries
     getImages: builder.query({
-      query: (query) => {
-        return `search?q=${query}&media_type=image`;
+      query: (payload) => {
+        const queryString = Object.keys(payload.extraFilters)
+        .filter((key) => payload.extraFilters[key] !== null && payload.extraFilters[key] !== "")
+        .map((key) => `${key}=${payload.extraFilters[key]}`)
+        .join("&");
+        return `search?q=${payload.query}&media_type=image&${queryString}`;
       },
       providesTags: ["Images"],
     }),

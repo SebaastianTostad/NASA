@@ -6,11 +6,8 @@ import {
   TextOverlay,
 } from "./MediaCard.styled";
 import { useDispatch } from "react-redux";
-import { selectCard } from "../redux/searchSlice/detailSlice";
+import { selectCard } from "../../redux/searchSlice/detailSlice";
 import { useNavigate } from "react-router-dom";
-
-
-
 
 export default function MediaCard(props) {
   const dispatch = useDispatch()
